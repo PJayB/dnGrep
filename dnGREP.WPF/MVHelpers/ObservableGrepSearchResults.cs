@@ -302,8 +302,8 @@ namespace dnGREP.WPF
 
         public void Select()
         {
-            isSelected = true;
-            OnPropertyChanged("IsSelected");
+            IsSelected = false;
+            IsSelected = true;
         }
 
         #region PropertyChanged Members
