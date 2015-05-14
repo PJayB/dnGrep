@@ -51,6 +51,8 @@ namespace dnGREP.WPF.UserControls
 
             if (item != null)
             {
+                // HACK
+                item.IsSelected = false;
                 item.IsSelected = true;
             }
         }
@@ -171,6 +173,16 @@ namespace dnGREP.WPF.UserControls
             {
                 copyToClipboard();
             }
+
+            if (e.Key == Key.Enter && tvSearchResult.SelectedItem != null)
+            {
+                if (tvSearchResult.SelectedItem is FormattedGrepLine)
+                    inputData.OpenFile(tvSearchResult.SelectedItem as FormattedGrepLine, true);
+                else if (tvSearchResult.SelectedItem is FormattedGrepResult)
+                    inputData.OpenFile(tvSearchResult.SelectedItem as FormattedGrepResult, true);
+
+                e.Handled = true;
+            }
         }
 
         private void btnCopyTreeItemToClipboard_Click(object sender, RoutedEventArgs e)
@@ -201,7 +213,6 @@ namespace dnGREP.WPF.UserControls
                 e.Handled = true;
             }
         }
-
 
         private void tvSearchResult_MouseDown(object sender, MouseButtonEventArgs e)
         {

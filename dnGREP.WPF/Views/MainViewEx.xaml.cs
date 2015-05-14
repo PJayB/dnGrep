@@ -219,7 +219,7 @@ namespace dnGREP.WPF
         {
             if (e.Key == Key.Escape)
             {
-                if (rtResults.HasItems)
+                if (rtResults.HasItems && !rtResults.IsKeyboardFocusWithin)
                     rtResults.Select();
                 else
                     tbSearchFor.Focus();
