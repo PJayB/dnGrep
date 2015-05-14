@@ -189,7 +189,7 @@
                 </Popup>
                 <Microsoft_Windows_Themes:ListBoxChrome x:Name="Border" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}" Grid.ColumnSpan="2" RenderMouseOver="{TemplateBinding IsMouseOver}" RenderFocused="{TemplateBinding IsKeyboardFocusWithin}"/>
                 <DockPanel>
-                    <TextBlock DockPanel.Dock="Right" HorizontalAlignment="Right" VerticalAlignment="Center" Foreground="#FFB1AFAF" Text="{Binding Path=FileFiltersSummary}" Margin="0,0,5,0"/>
+                    <!--<TextBlock DockPanel.Dock="Right" HorizontalAlignment="Right" VerticalAlignment="Center" Foreground="#FFB1AFAF" Text="{Binding Path=FileFiltersSummary}" Margin="0,0,5,0"/>-->
                     <TextBox x:Name="PART_EditableTextBox" HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}" IsReadOnly="{Binding IsReadOnly, RelativeSource={RelativeSource TemplatedParent}}" Margin="{TemplateBinding Padding}" Style="{StaticResource ComboBoxEditableTextBox}" VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}"/>
                 </DockPanel>
                 <ToggleButton Grid.Column="1" IsChecked="{Binding IsDropDownOpen, Mode=TwoWay, RelativeSource={RelativeSource TemplatedParent}}" Style="{StaticResource ComboBoxToggleButton}"/>
@@ -287,11 +287,15 @@
                     <Setter Property="Padding" Value="3"/>
                     <Setter Property="Template" Value="{StaticResource ComboBoxEditableTemplate}"/>
                 </Trigger>
+                <Trigger Property="IsReadOnly" Value="true">
+                    <Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.GrayTextBrushKey}}"/>
+                    <Setter Property="Background" Value="#FFF4F4F4"/>
+                </Trigger>
             </Style.Triggers>
         </Style>
     </UserControl.Resources>
     <DockPanel LastChildFill="True">
-        <ComboBox AllowDrop="True" IsEditable="True" ItemsSource="{Binding Path=FastFileMatchBookmarks}" PreviewDragEnter="tbFolderName_DragOver" 
+        <ComboBox AllowDrop="True" IsEditable="True" IsReadOnly="{Binding Path=FileFilters}" ItemsSource="{Binding Path=FastFileMatchBookmarks}" PreviewDragEnter="tbFolderName_DragOver" 
             PreviewDragOver="tbFolderName_DragOver" PreviewDrop="tbFolderName_Drop" Name="tbFolderName" 
             Text="{Binding Path=FilePattern, UpdateSourceTrigger=PropertyChanged}" ToolTip="Path to search in" TabIndex="3" 
             Style="{DynamicResource ComboBoxStyle}"/>
