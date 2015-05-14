@@ -613,6 +613,13 @@ namespace dnGREP.WPF
                             }
                         }
 
+                        // @pjb: make it explicit that we're just looking for filenames
+                        string searchFor = param.SearchFor;
+                        if (param.TypeOfSearch == SearchType.FilesOnly)
+                        {
+                            searchFor = null;
+                        }
+
                         GrepCore grep = new GrepCore();
                         grep.SearchParams.FuzzyMatchThreshold = settings.Get<double>(GrepSettings.Key.FuzzyMatchThreshold);
                         grep.SearchParams.LinesBefore = settings.Get<int>(GrepSettings.Key.ContextLinesBefore);
@@ -632,7 +639,7 @@ namespace dnGREP.WPF
                             searchOptions |= GrepSearchOption.StopAfterFirstMatch;
 
                         grep.ProcessedFile += new GrepCore.SearchProgressHandler(grep_ProcessedFile);
-                        e.Result = grep.Search(files, param.TypeOfSearch, param.SearchFor, searchOptions, param.CodePage);
+                        e.Result = grep.Search(files, param.TypeOfSearch, searchFor, searchOptions, param.CodePage);
                         grep.ProcessedFile -= new GrepCore.SearchProgressHandler(grep_ProcessedFile);
                     }
                     else

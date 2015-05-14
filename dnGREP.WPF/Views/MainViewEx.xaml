@@ -73,18 +73,19 @@
                             <ColumnDefinition Width="120"/>
                         </Grid.ColumnDefinitions>
                         <StackPanel Orientation="Horizontal" Grid.Column="0">
+                            <RadioButton GroupName="SearchFiles" x:Name="rbFilesOnly" Margin="3" IsChecked="{Binding TypeOfSearch, ConverterParameter=FilesOnly, Converter={StaticResource ebc}}" ToolTip="Search for files only" TabIndex="3" Content="Files O_nly"/>
                             <RadioButton GroupName="SearchRegex" x:Name="rbRegex" Margin="3" IsChecked="{Binding TypeOfSearch, ConverterParameter=Regex, Converter={StaticResource ebc}}" ToolTip="Regular expression search" TabIndex="3" Content="_Regex"/>
                             <RadioButton GroupName="SearchXPath" x:Name="rbXPath" Margin="3" IsChecked="{Binding TypeOfSearch, ConverterParameter=XPath, Converter={StaticResource ebc}}" ToolTip="XPath search (XML documents only)" TabIndex="4" Content="_XPath"/>
                             <RadioButton GroupName="SearchText" x:Name="rbText" Margin="3" IsChecked="{Binding TypeOfSearch, ConverterParameter=PlainText, Converter={StaticResource ebc}}" ToolTip="Plain text search" TabIndex="5" Content="_Text"/>
                             <RadioButton GroupName="SearchSoundex" x:Name="rbSoundex" Margin="3" IsChecked="{Binding TypeOfSearch, ConverterParameter=Soundex, Converter={StaticResource ebc}}" ToolTip="Phonetic search" TabIndex="6" Content="_Phonetic"/>
                         </StackPanel>
                         <Label Grid.Column="1" Content="{Binding ValidationMessage}"/>
-						<StackPanel Margin="0 0 0 2" Grid.Column="2" Orientation="Horizontal" HorizontalAlignment="Right">
+                        <StackPanel Margin="0 0 0 2" Grid.Column="2" Orientation="Horizontal" HorizontalAlignment="Right">
                             <CheckBox ToolTip="{Binding IsBookmarkedTooltip}" Margin="0 0 5 0" Width="20"
 								Style="{DynamicResource MetroButton}" Template="{DynamicResource FavsMetroButtonTemplate}" IsChecked="{Binding IsBookmarked}" 
                                       Command="{Binding BookmarkAddCommand}"/>
-							<Button x:Name="btnTest" Command="{Binding TestCommand}" TabIndex="7" Content="Test" Width="60"/>
-						</StackPanel>                        
+                            <Button x:Name="btnTest" Command="{Binding TestCommand}" TabIndex="7" Content="Test" Width="60"/>
+                        </StackPanel>
                     </Grid>
                     <Expander DockPanel.Dock="Bottom" x:Name="expOptions" IsExpanded="{Binding IsOptionsExpanded}" TabIndex="15">
                         <Expander.Header>
@@ -111,19 +112,20 @@
                         </Grid.RowDefinitions>
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="70"/>
-                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="121*"/>
+                            <ColumnDefinition Width="557*"/>
                         </Grid.ColumnDefinitions>
-                        <TextBlock Grid.Row="0" Grid.Column="0" VerticalAlignment="Center"><Run Text="Search for:"/></TextBlock>
+                        <TextBlock Grid.Row="0" Grid.Column="0" VerticalAlignment="Center" Margin="0,5"><Run Text="Search for:"/></TextBlock>
                         <ComboBox Grid.Row="0" Grid.Column="1" Text="{Binding SearchFor}" IsEditable="True" x:Name="tbSearchFor" ItemsSource="{Binding FastSearchBookmarks}" Style="{DynamicResource MultilineComboBoxStyle}"
                                         FontFamily="Consolas" FontSize="12" TabIndex="8" my:DiginesisHelpProvider.HelpKeyword="RegularExpressions" my:DiginesisHelpProvider.HelpNavigator="Topic"
-                                        my:DiginesisHelpProvider.ShowHelp="True" Padding="5">
+                                        my:DiginesisHelpProvider.ShowHelp="True" Padding="5" Grid.ColumnSpan="2">
                             <ComboBox.ToolTip>
                                 <TextBlock><Run Text=". matches all characters"/><LineBreak/><Run Text="\w matches alpha-numerics"/><LineBreak/><Run Text="\d matches digits"/><LineBreak/><Run Text="\s matches space"/><LineBreak/><Run Text="* matches any number of characters"/><LineBreak/><Run Text="{}{1,3} matches 1 to 3 characters"/><LineBreak/><Run Text="For more Regex patterns hit F1"/></TextBlock>
                             </ComboBox.ToolTip>
                         </ComboBox>
-                        <TextBlock Grid.Row="2" Grid.Column="0" VerticalAlignment="Center"><Run Text="Replace for:"/></TextBlock>
+                        <TextBlock Grid.Row="2" Grid.Column="0" VerticalAlignment="Center" Margin="0,5"><Run Text="Replace for:"/></TextBlock>
                         <ComboBox Grid.Row="2" Grid.Column="1" Text="{Binding ReplaceWith}" IsEditable="True" x:Name="tbReplaceWith" ItemsSource="{Binding FastReplaceBookmarks}" Style="{DynamicResource MultilineComboBoxStyle}"
-                                                  FontFamily="Consolas" FontSize="12" TabIndex="9" Padding="5">
+                                                  FontFamily="Consolas" FontSize="12" TabIndex="9" Padding="5" Grid.ColumnSpan="2">
                             <ComboBox.ToolTip>
                                 <TextBlock><Run Text="$&amp; replaces entire regex"/><LineBreak/><Run Text="$1, $2, $3, etc... inserts the text matched between capturing parentheses into the replacement text"/><LineBreak/><Run Text="$$ inserts a single dollar sign into the replacement text"/></TextBlock>
                             </ComboBox.ToolTip>
@@ -135,7 +137,7 @@
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*" />
                 </Grid.ColumnDefinitions>
-				<StackPanel HorizontalAlignment="Right" Grid.Column="0" Orientation="Horizontal">
+                <StackPanel HorizontalAlignment="Right" Grid.Column="0" Orientation="Horizontal">
                     <CheckBox IsChecked="{Binding SearchInResultsContent}" Visibility="{Binding CanSearchInResults, Converter={StaticResource BooleanToVisibilityConverter}}" VerticalAlignment="Center" Margin="0 0 5 0" Content="Search _in results" TabIndex="25"/>
                     <CheckBox IsChecked="{Binding PreviewFileContent}" VerticalAlignment="Center" Margin="0 0 5 0" Content="Pre_view file" TabIndex="26"/>
                     <Button x:Name="btnSearch" Content="_Search" Command="{Binding SearchCommand}" 
@@ -167,11 +169,11 @@
                             </ContextMenu>
                         </Button.ContextMenu>
                     </Button>
-                    
+
                     <Button Width="64" Margin="3" Content="_Cancel" x:Name="btnCancel" Command="{Binding CancelCommand}" TabIndex="30" IsCancel="True" />
                 </StackPanel>
-            </Grid>            
-            <Controls:ResultsTree x:Name="rtResults" DataContext="{Binding SearchResults}" Grid.Row="3" TabIndex="50"/>            
+            </Grid>
+            <Controls:ResultsTree x:Name="rtResults" DataContext="{Binding SearchResults}" Grid.Row="3" TabIndex="50"/>
         </DockPanel>
         <StatusBar ClipToBounds="False" Grid.Row="4" x:Name="statusBar">
             <ProgressBar x:Name="barProgressBar" Height="18" IsIndeterminate="{Binding IsOperationInProgress}" Width="150" />
