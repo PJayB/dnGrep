@@ -51,7 +51,9 @@ namespace dnGREP.WPF.UserControls
 
             if (item != null)
             {
-                // HACK
+                // HACK - force the Select event to trigger (which calls Focus on the
+                // TreeViewItem.) Why do it this way? Because I suck at C#. Suggestions
+                // welcome.
                 item.IsSelected = false;
                 item.IsSelected = true;
             }
