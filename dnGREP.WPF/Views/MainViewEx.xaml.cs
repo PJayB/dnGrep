@@ -80,6 +80,9 @@ namespace dnGREP.WPF
 
 		private void Window_Loaded(object sender, RoutedEventArgs e)
 		{
+            // @pjb: start in the search box on startup
+            this.tbSearchFor.Focus();
+
             inputData.StickyWindow = new StickyWindow(this);
             inputData.StickyWindow.StickToScreen = true;
             inputData.StickyWindow.StickToOther = true;
