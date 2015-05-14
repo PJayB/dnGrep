@@ -169,16 +169,20 @@
                                     Name="cbEncoding" VerticalAlignment="Top" SelectedValue="{Binding Path=CodePage}" SelectedIndex="0" Initialized="cbEncoding_Initialized"
                                       TabIndex="54"  IsEnabled="{Binding Path=FileFilters, Converter={StaticResource InverseBooleanConverter}}"/>
                                 </Grid>
-                                <Expander Grid.Row="2" Grid.ColumnSpan="2" Header="History">
-                                    <ScrollViewer x:Name="DropDownScrollViewer" Height="200">
-                                        <Grid RenderOptions.ClearTypeHint="Enabled">
-                                            <Canvas HorizontalAlignment="Left" Height="0" VerticalAlignment="Top" Width="0">
-                                                <Rectangle x:Name="OpaqueRect" Fill="{Binding Background, ElementName=DropDownBorder}" Height="{Binding ActualHeight, ElementName=DropDownBorder}" Width="{Binding ActualWidth, ElementName=DropDownBorder}"/>
-                                            </Canvas>
-                                            <ItemsPresenter x:Name="ItemsPresenter" KeyboardNavigation.DirectionalNavigation="Contained" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"/>
-                                        </Grid>
-                                    </ScrollViewer>
-                                </Expander>
+                                <!--<GroupBox Grid.Row="2" Grid.ColumnSpan="2" Header="History">-->
+                                <StackPanel Grid.Row="2" Grid.ColumnSpan="2" Margin="0,10,0,0">
+                                    <Border BorderBrush="{DynamicResource ButtonNormalBorder}" BorderThickness="1" VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
+                                        <ScrollViewer x:Name="DropDownScrollViewer" Height="200">
+                                            <Grid RenderOptions.ClearTypeHint="Enabled">
+                                                <Canvas HorizontalAlignment="Left" Height="0" VerticalAlignment="Top" Width="0">
+                                                    <Rectangle x:Name="OpaqueRect" Fill="{Binding Background, ElementName=DropDownBorder}" Height="{Binding ActualHeight, ElementName=DropDownBorder}" Width="{Binding ActualWidth, ElementName=DropDownBorder}"/>
+                                                </Canvas>
+                                                <ItemsPresenter x:Name="ItemsPresenter" KeyboardNavigation.DirectionalNavigation="Contained" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"/>
+                                            </Grid>
+                                        </ScrollViewer>
+                                    </Border>
+                                </StackPanel>
+                                <!--</GroupBox>-->
                             </Grid>
                         </Border>
                     </Microsoft_Windows_Themes:SystemDropShadowChrome>
