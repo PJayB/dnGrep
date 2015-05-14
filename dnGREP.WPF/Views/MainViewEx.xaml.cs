@@ -219,7 +219,10 @@ namespace dnGREP.WPF
         {
             if (e.Key == Key.Escape)
             {
-                tbSearchFor.Focus();
+                if (rtResults.HasItems)
+                    rtResults.Select();
+                else
+                    tbSearchFor.Focus();
             }
         }        
 	}

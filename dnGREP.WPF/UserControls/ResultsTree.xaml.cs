@@ -35,6 +35,25 @@ namespace dnGREP.WPF.UserControls
             inputData = ((ObservableGrepSearchResults)(this.DataContext));
         }
 
+        public bool HasItems
+        {
+            get { return tvSearchResult.HasItems; }
+        }
+
+        public void Select()
+        {
+            FormattedGrepResult item = this.tvSearchResult.SelectedItem as FormattedGrepResult;
+            if (item == null && tvSearchResult.HasItems)
+            {
+                // Select the first element
+                item = tvSearchResult.Items[0] as FormattedGrepResult;
+            }
+
+            if (item != null)
+            {
+                item.IsSelected = true;
+            }
+        }
 
         #region Tree right click events
 
@@ -172,6 +191,17 @@ namespace dnGREP.WPF.UserControls
                 Clipboard.SetText(System.IO.Path.GetFileName(result.GrepResult.FileNameDisplayed));
             }
         }
+
+        private void tvSearchResult_Selected(object sender, RoutedEventArgs e)
+        {
+            TreeViewItem item = sender as TreeViewItem;
+            if (item != null)
+            {
+                item.Focus();
+                e.Handled = true;
+            }
+        }
+
 
         private void tvSearchResult_MouseDown(object sender, MouseButtonEventArgs e)
         {

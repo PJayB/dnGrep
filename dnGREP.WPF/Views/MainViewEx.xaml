@@ -171,7 +171,7 @@
                     <Button Width="64" Margin="3" Content="_Cancel" x:Name="btnCancel" Command="{Binding CancelCommand}" TabIndex="30" IsCancel="True" />
                 </StackPanel>
             </Grid>            
-            <Controls:ResultsTree DataContext="{Binding SearchResults}" Grid.Row="3" TabIndex="50"/>            
+            <Controls:ResultsTree x:Name="rtResults" DataContext="{Binding SearchResults}" Grid.Row="3" TabIndex="50"/>            
         </DockPanel>
         <StatusBar ClipToBounds="False" Grid.Row="4" x:Name="statusBar">
             <ProgressBar x:Name="barProgressBar" Height="18" IsIndeterminate="{Binding IsOperationInProgress}" Width="150" />
