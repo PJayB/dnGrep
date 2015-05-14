@@ -213,6 +213,14 @@ namespace dnGREP.WPF
             advanceContextMenu.Placement = System.Windows.Controls.Primitives.PlacementMode.Bottom;
             advanceContextMenu.PlacementTarget = (UIElement)sender;
             advanceContextMenu.IsOpen = true;
+        }
+
+        private void Window_KeyUp(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Escape)
+            {
+                tbSearchFor.Focus();
+            }
         }        
 	}
 }

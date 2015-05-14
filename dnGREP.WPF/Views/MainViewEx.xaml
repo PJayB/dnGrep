@@ -12,7 +12,7 @@
     SnapsToDevicePixels="True" ResizeMode="CanResizeWithGrip" AllowDrop="False"
     my:DiginesisHelpProvider.HelpKeyword="SearchWindow" my:DiginesisHelpProvider.HelpNavigator="Topic" my:DiginesisHelpProvider.ShowHelp="True" 
     WindowStartupLocation="Manual" TextOptions.TextFormattingMode="{Binding TextFormatting}"
-    FocusManager.FocusedElement="{Binding ElementName=tbSearchFor}" Activated="Window_Activated" StateChanged="Window_StateChanged">
+    FocusManager.FocusedElement="{Binding ElementName=tbSearchFor}" Activated="Window_Activated" StateChanged="Window_StateChanged" KeyUp="Window_KeyUp">
     <!-- Resources -->
     <Window.Resources>
         <my:InverseBooleanConverter x:Key="InverseBooleanConverter" />
