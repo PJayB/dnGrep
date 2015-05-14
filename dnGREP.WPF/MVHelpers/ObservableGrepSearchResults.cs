@@ -300,6 +300,12 @@ namespace dnGREP.WPF
                 LineNumberColumnWidth = formattedLines.LineNumberColumnWidth;
         }
 
+        public void Select()
+        {
+            isSelected = true;
+            OnPropertyChanged("IsSelected");
+        }
+
         #region PropertyChanged Members
         // Create the OnPropertyChanged method to raise the event
         protected void OnPropertyChanged(string name)
