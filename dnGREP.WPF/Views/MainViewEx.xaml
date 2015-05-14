@@ -57,10 +57,12 @@
                 <Grid>
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="200"/>
                         <ColumnDefinition Width="48" />
                     </Grid.ColumnDefinitions>
-                    <Controls:FolderSelectDropdown Grid.Column="0" x:Name="tbFolderName"/>
-                    <Button Command="{Binding BrowseCommand}" Grid.Column="1" Width="42" HorizontalAlignment="Right" x:Name="btnBrowse" 
+                    <ComboBox IsEditable="True" ItemsSource="{Binding Path=FastPathBookmarks}" Text="{Binding Path=FileOrFolderPath, UpdateSourceTrigger=PropertyChanged}"/>
+                    <Controls:FolderSelectDropdown Grid.Column="1" x:Name="tbFolderName"/>
+                    <Button Command="{Binding BrowseCommand}" Grid.Column="2" Width="42" HorizontalAlignment="Right" x:Name="btnBrowse" 
                             ToolTip="Browse for folder or files" Content="..."/>
                 </Grid>
             </GroupBox>

@@ -291,9 +291,9 @@
         </Style>
     </UserControl.Resources>
     <DockPanel LastChildFill="True">
-        <ComboBox AllowDrop="True" IsEditable="True" ItemsSource="{Binding Path=FastPathBookmarks}" PreviewDragEnter="tbFolderName_DragOver" 
+        <ComboBox AllowDrop="True" IsEditable="True" ItemsSource="{Binding Path=FastFileMatchBookmarks}" PreviewDragEnter="tbFolderName_DragOver" 
             PreviewDragOver="tbFolderName_DragOver" PreviewDrop="tbFolderName_Drop" Name="tbFolderName" 
-            Text="{Binding Path=FileOrFolderPath, UpdateSourceTrigger=PropertyChanged}" ToolTip="Path to search in" TabIndex="3" 
+            Text="{Binding Path=FilePattern, UpdateSourceTrigger=PropertyChanged}" ToolTip="Path to search in" TabIndex="3" 
             Style="{DynamicResource ComboBoxStyle}"/>
     </DockPanel>
 </UserControl>
