@@ -168,7 +168,7 @@
                         </Button.ContextMenu>
                     </Button>
                     
-                    <Button Width="64" Margin="3" Content="_Cancel" x:Name="btnCancel" Command="{Binding CancelCommand}" TabIndex="53" />
+                    <Button Width="64" Margin="3" Content="_Cancel" x:Name="btnCancel" Command="{Binding CancelCommand}" TabIndex="53" IsCancel="True" />
                 </StackPanel>
             </Grid>            
             <Controls:ResultsTree DataContext="{Binding SearchResults}" Grid.Row="3"/>            
