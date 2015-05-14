@@ -60,7 +60,7 @@
                         <ColumnDefinition Width="200"/>
                         <ColumnDefinition Width="48" />
                     </Grid.ColumnDefinitions>
-                    <ComboBox IsEditable="True" ItemsSource="{Binding Path=FastPathBookmarks}" Text="{Binding Path=FileOrFolderPath, UpdateSourceTrigger=PropertyChanged}"/>
+                    <ComboBox IsEditable="True" ItemsSource="{Binding Path=FastPathBookmarks}" Text="{Binding Path=FileOrFolderPath, UpdateSourceTrigger=PropertyChanged}" Margin="0,0,5,0"/>
                     <Controls:FolderSelectDropdown Grid.Column="1" x:Name="tbFolderName"/>
                     <Button Command="{Binding BrowseCommand}" Grid.Column="2" Width="42" HorizontalAlignment="Right" x:Name="btnBrowse" 
                             ToolTip="Browse for folder or files" Content="..."/>
