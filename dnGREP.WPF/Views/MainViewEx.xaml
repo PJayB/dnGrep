@@ -87,13 +87,14 @@
                             <Button x:Name="btnTest" Command="{Binding TestCommand}" Content="Test" Width="60"/>
                         </StackPanel>
                     </Grid>
-                    <Expander DockPanel.Dock="Bottom" x:Name="expOptions" IsExpanded="{Binding IsOptionsExpanded}">
+                    <!--<Expander DockPanel.Dock="Bottom" x:Name="expOptions" IsExpanded="{Binding IsOptionsExpanded}">
                         <Expander.Header>
                             <WrapPanel>
                                 <TextBlock><Run Text="Options"/></TextBlock>
                                 <TextBlock Margin="15,0,0,0" Text="{Binding OptionsSummary}"/>
                             </WrapPanel>
-                        </Expander.Header>
+                        </Expander.Header>-->
+                    <Grid DockPanel.Dock="Bottom" Margin="0,5,0,0">
                         <StackPanel>
                             <WrapPanel Orientation="Horizontal">
                                 <CheckBox Margin="3" x:Name="cbCaseSensitive" IsChecked="{Binding CaseSensitive}" IsEnabled="{Binding IsCaseSensitiveEnabled}" Content="C_ase sensitive"/>
@@ -103,7 +104,8 @@
                                 <CheckBox Margin="3" x:Name="cbStopAfterFirstMatch" IsChecked="{Binding StopAfterFirstMatch}" Content="Stop after _first match"/>
                             </WrapPanel>
                         </StackPanel>
-                    </Expander>
+                    </Grid>
+                    <!--</Expander>-->
                     <Grid>
                         <Grid.RowDefinitions>
                             <RowDefinition Height="*" />
